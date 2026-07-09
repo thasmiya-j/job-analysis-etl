@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: staging
+    database: NAUKRI_DB
+    schema: STAGING
+
+    tables:
+      - name: STG_ALL_JOBS
+        config:
+          loaded_at_field: load_timestamp
+          freshness:
+            warn_after:
+              count: 24
+              period: hour
+            error_after:
+              count: 48
+              period: hour

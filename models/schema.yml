@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_jobs
+    columns:
+      - name: link
+        tests:
+          - not_null
+      - name: batch_id
+        tests:
+          - not_null
+
+  - name: history_jobs
+    columns:
+      - name: link
+        tests:
+          - not_null
+      - name: flag
+        tests:
+          - not_null
+
+  - name: int_jobs
+    columns:
+      - name: link
+        tests:
+          
+          - not_null
+      - name: role_category
+        tests:
+          - not_null
+
+  - name: data_analyst_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
+
+  - name: data_engineer_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
+
+  - name: business_analyst_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
+
+  - name: accountant_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
+
+  - name: financial_analyst_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
+
+  - name: tax_consultant_jobs
+    columns:
+      - name: link
+        tests:
+          - unique
