@@ -41,5 +41,11 @@ select
 from {{ ref('stg_jobs') }}
 
 {% if is_incremental() %}
-where load_timestamp > (select coalesce(max(load_timestamp), '2026-07-01'::timestamp_ntz) from {{ this }})
+where load_timestamp >= (
+    select coalesce(
+        dateadd(day, -{{ var('incremental_lookback_days', 2) }}, max(load_timestamp)),
+        '2026-01-07'::timestamp
+    )
+    from {{ this }}
+)
 {% endif %}
